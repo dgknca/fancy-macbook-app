@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import db from '../../assets/db.json'
-import { AddApp } from '../AddApp'
-import { Card } from '../Card'
+import Masonry from 'react-masonry-css';
+import db from '../../assets/db.json';
+import { AddApp } from '../AddApp';
+import { Card } from '../Card';
+
+const masonryGridBreakpoints = {
+  default: 3,
+  1200: 2,
+  720: 1,
+};
 
 const CardList = ({ filteredKeyword, searchItems, addToInput, removeFromInput, isItemAdded }) => {
   const [filteredData, setFilteredData] = useState(db);
@@ -47,7 +54,10 @@ const CardList = ({ filteredKeyword, searchItems, addToInput, removeFromInput, i
   }, [filteredKeyword, searchItems])
 
   return (
-    <div className="card-list">
+    <Masonry
+      breakpointCols={masonryGridBreakpoints}
+      className="card-masonry-grid"
+      columnClassName="card-masonry-grid-column">
       {filteredData.map((item, index) => (
         <Card
           key={index}
@@ -66,7 +76,7 @@ const CardList = ({ filteredKeyword, searchItems, addToInput, removeFromInput, i
           <AddApp />
         </div>
       )}
-    </div>
+    </Masonry>
   )
 }
 

@@ -44,8 +44,11 @@ const Card = ({ data, isAdded, addToInput, removeFromInput }) => {
       <div className="categories">
         {
           categories.map(
-            (category, index) =>
-              <Badge category={category} key={index} />
+            (category, index) => (
+              <div key={index}>
+                <Badge category={category} />
+              </div>
+            )
           )
         }
       </div>

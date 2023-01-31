@@ -1,12 +1,17 @@
-.card-list {
+.card-masonry-grid {
   display: flex;
-  flex-wrap: wrap;
-  width: calc(100% - 200px);
-  justify-content: space-between;
-  margin-top: $spacer-6;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+  max-width: 1160px;
 
-  &>* {
-    margin: $spacer-4;
+  &-column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+    min-width: 0;
+
+    > div { /* change div to reference your elements you put in <Masonry> */
+      margin-bottom: 30px;
+    }
   }
 }
 
@@ -33,9 +38,14 @@
   }
 }
 
-@media (max-width: 500px) {
-  .card-list {
-    width: 100%;
-    justify-content: center;
+@media (min-width: 500px) {
+  .card-masonry-grid {
+    padding: 0 15px;
+  }
+}
+
+@media (min-width: 720px) {
+  .card-masonry-grid {
+    padding: 0 30px;
   }
 }
